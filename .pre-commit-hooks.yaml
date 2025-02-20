@@ -1,0 +1,7 @@
+- id: shellcheck
+  name: shellcheck
+  description: Shell scripts conform to shellcheck
+  entry: shellcheck.sh
+  language: script
+  types: [shell]
+  args: [-e, SC1091]
