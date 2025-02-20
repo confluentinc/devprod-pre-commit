@@ -40,6 +40,13 @@ repos:
       - id: name-tests-test
       - id: trailing-whitespace
 
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.7
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
   - repo: https://github.com/confluentinc/gitleaks
     rev: v7.6.1.1
     hooks:
@@ -65,7 +72,7 @@ repos:
         always_run: false
 
   - repo: https://github.com/confluentinc/devprod-pre-commit
-    rev: v0.0
+    rev: v0.1.0
     hooks:
       - id: shellcheck
 ```
@@ -81,8 +88,8 @@ implicit-str-concat is particularly important, as that setting would have preven
 
 ```
 [lint]
-select = ["E", "F", "ISC"]
-ignore = ["E501"]
+extend-select = ["ISC"]
+unfixable = ["ISC001"]
 
 [lint.flake8-implicit-str-concat]
 allow-multiline = false
