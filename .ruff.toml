@@ -1,0 +1,6 @@
+[lint]
+extend-select = ["ISC"]
+unfixable = ["ISC001"]
+
+[lint.flake8-implicit-str-concat]
+allow-multiline = false

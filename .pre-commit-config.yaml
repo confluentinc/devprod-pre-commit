@@ -1,0 +1,28 @@
+fail_fast: false
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-merge-conflict
+      - id: check-yaml
+        args: [--unsafe]
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/confluentinc/gitleaks
+    rev: v7.6.1.1
+    hooks:
+      - id: gitleaks
+        args: [--verbose]
+
+  - repo: local
+    hooks:
+      - id: shellcheck
+        name: shellcheck
+        description: Shell scripts conform to shellcheck
+        entry: shellcheck.sh
+        language: script
+        types: [shell]
+        exclude_types: [csh, perl, python, ruby, tcsh, zsh]
+        args: [-e, SC1091]

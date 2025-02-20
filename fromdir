@@ -1,0 +1,16 @@
+#!/bin/sh
+
+test $# -lt 2 && {
+    printf >&2 "%s\n" "usage: $0 DIR CMD [ARGS...]"
+    exit 2
+}
+
+targetdir="$1"
+shift
+
+cd "$targetdir" || exit 1
+test pipenv = "$1" \
+    && grep -F -q '[dev-packages]' Pipfile 2>/dev/null \
+    && pipenv install --dev
+
+"$@"
