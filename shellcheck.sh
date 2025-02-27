@@ -4,15 +4,32 @@
 
 set -eu
 
-# https://www.shellcheck.net/
-test -n "$(whereis -q shellcheck)" || {
-    brew install shellcheck
-    hash -r
+func_fatal() {
+    echo "$@" >&2
+    exit 1
 }
+
+func_have_command() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+# https://www.shellcheck.net/
+if ! func_have_command shellcheck; then
+    if func_have_command brew; then
+        brew install shellcheck
+    elif func_have_command apt; then
+        sudo apt -y install shellcheck
+    elif func_have_command yum; then
+        sudo yum install shellcheck
+    else
+        func_fatal "Can't figure out how to install shellcheck on this $(uname -s) system"
+    fi
+    hash -r
+fi
 
 # Filter out non-shell files, if we can.
 new_args=( )
-if command -v file >/dev/null 2>&1; then
+if func_have_command file; then
     for arg in "$@"; do
         if [ -f "${arg}" ]; then
             case "$(file --brief --mime-type "${arg}")" in
