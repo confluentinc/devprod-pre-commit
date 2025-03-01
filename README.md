@@ -1,3 +1,5 @@
+WARNING: Don't merge to the default branch when this line is present.
+
 # devprod-pre-commit
 
 Starter repo for pre-commit hooks for DevProd.
