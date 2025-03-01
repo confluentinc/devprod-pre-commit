@@ -1,0 +1,23 @@
+version: v1.0
+name: build-test-release
+agent:
+  machine:
+    type: s1-prod-ubuntu24-04-arm64-1
+auto_cancel:
+  running:
+    when: "branch != 'master'"
+execution_time_limit:
+  hours: 1
+blocks:
+  - name: "yaml check"
+    dependencies: []
+    run:
+      # don't run the build or unit tests on non-functional changes...
+      when: "change_in('/', {exclude: ['/.deployed-versions/', '.github/']})"
+    task:
+      jobs:
+        - name: "linting and formatting"
+          commands:
+            - pip install pre-commit
+            - checkout
+            - pre-commit run --all-files
