@@ -27,20 +27,4 @@ if ! func_have_command shellcheck; then
     hash -r
 fi
 
-# Filter out non-shell files, if we can.
-new_args=( )
-if func_have_command file; then
-    for arg in "$@"; do
-        if [ -f "${arg}" ]; then
-            case "$(file --brief --mime-type "${arg}")" in
-                *shellscript) new_args[${#new_args[@]}]="${arg}" ;;
-            esac
-        else
-            # Pass non-file args through unchanged
-            new_args[${#new_args[@]}]="${arg}"
-            continue
-        fi
-    done
-fi
-
-shellcheck "${new_args[@]}"
+shellcheck "$@"
