@@ -26,3 +26,12 @@ repos:
         types: [shell]
         exclude_types: [csh, perl, python, ruby, tcsh, zsh]
         args: [-e, SC1091]
+      - id: trufflehog
+        name: TruffleHog
+        description: Detect secrets in your data
+        entry: trufflehog.sh git file://. --since-commit HEAD --results=verified --fail
+        language: script
+        pass_filenames: false
+        stages:
+          - pre-commit
+          - pre-push
