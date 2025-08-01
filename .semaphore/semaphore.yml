@@ -18,6 +18,7 @@ blocks:
       jobs:
         - name: "linting and formatting"
           commands:
+            - type -p -a git
             - pip install pre-commit
             - checkout
             - pre-commit run --all-files
