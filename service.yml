@@ -6,8 +6,6 @@ git:
   enable: true
   hooks:
     enable: true
-    additional_modules:
-      - shellcheck
 codeowners:
   enable: true
 renovatebot:
