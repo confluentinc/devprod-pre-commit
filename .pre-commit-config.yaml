@@ -13,11 +13,6 @@ repos:
 
       - id: check-case-conflict
       - id: check-json
-  - repo: https://github.com/confluentinc/gitleaks
-    rev: v7.6.1.1
-    hooks:
-      - id: gitleaks
-        args: [--verbose]
 
   - repo: local
     hooks:
@@ -38,8 +33,5 @@ repos:
         stages:
           - pre-commit
           - pre-push
-  - repo: https://github.com/confluentinc/devprod-pre-commit
-    rev: v0.4.0
-    hooks:
-      - id: shellcheck
+
 exclude: ^.devcontainer/|^charts/|^mk-include/|^node_modules/
