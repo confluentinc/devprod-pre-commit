@@ -39,7 +39,7 @@ repos:
           - pre-commit
           - pre-push
   - repo: https://github.com/confluentinc/devprod-pre-commit
-    rev: v0.3.0
+    rev: v0.4.0
     hooks:
       - id: shellcheck
 exclude: ^.devcontainer/|^charts/|^mk-include/|^node_modules/
