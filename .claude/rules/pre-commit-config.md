@@ -1,5 +1,5 @@
 ---
-globs: ".pre-commit-hooks.yaml,.pre-commit-config.yaml"
+paths: ".pre-commit-hooks.yaml,.pre-commit-config.yaml"
 ---
 
 # Pre-commit Configuration Rules
