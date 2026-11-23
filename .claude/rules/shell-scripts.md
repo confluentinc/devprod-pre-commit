@@ -1,5 +1,5 @@
 ---
-globs: "*.sh,fromdir"
+paths: "*.sh,fromdir"
 ---
 
 # Shell Script Rules

@@ -1,5 +1,5 @@
 ---
-globs: ".semaphore/*.yml"
+paths: ".semaphore/*.yml"
 ---
 
 # Semaphore Pipeline Rules
